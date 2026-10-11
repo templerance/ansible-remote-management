@@ -1,0 +1,17 @@
+---
+- name: Настройка удалённого сервера
+  hosts: remote
+  become: yes
+
+  tasks:
+    - name: Установить Nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Запустить Nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
